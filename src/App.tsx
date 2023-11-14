@@ -4,11 +4,6 @@ import Input from './components/Input/Input';
 import Button from './components/Button/Button';
 import { JMBGDetails, getJMBGDetails } from './jmbgValidation';
 
-/*
-TODO:
-1. fix css to app
-*/
-
 interface UserData {
   firstName: string;
   lastName: string;
@@ -63,9 +58,15 @@ const App: React.FC = () => {
       <Button title='Pretraži' onClick={handleClick} />
       {details?.isValid && (
         <div>
-          <div>Datum rođenja: {details.dateOfBirth}</div>
-          <div>Regija rođenja: {details.region}</div>
-          <div>Pol: {details.gender}</div>
+          <div>
+            Datum rođenja: <b>{details.dateOfBirth}</b>
+          </div>
+          <div>
+            Regija rođenja: <b>{details.region}</b>
+          </div>
+          <div>
+            Pol: <b>{details.gender}</b>
+          </div>
         </div>
       )}
       <div className='error'>{error}</div>
