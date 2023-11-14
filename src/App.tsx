@@ -38,6 +38,7 @@ const App: React.FC = () => {
     }
     const details: JMBGDetails = getJMBGDetails(userData.jmbg.toString());
     setDetails(details);
+    setError('');
     if (details.isValid === false) setError(details.error);
   };
 
@@ -67,7 +68,7 @@ const App: React.FC = () => {
           <div>Pol: {details.gender}</div>
         </div>
       )}
-      <div>{error}</div>
+      <div className='error'>{error}</div>
     </>
   );
 };

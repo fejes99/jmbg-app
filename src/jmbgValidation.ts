@@ -84,6 +84,7 @@ export const getJMBGDetails = (jmbg: string): JMBGDetails => {
   details.dateOfBirth = createDate(yearOfBirth, monthOfBirth, dayOfBirth);
   details.region = region;
   details.gender = gender;
+  details.error = '';
 
   return details;
 };
