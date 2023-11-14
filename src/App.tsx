@@ -6,8 +6,7 @@ import { JMBGDetails, getJMBGDetails } from './jmbgValidation';
 
 /*
 TODO:
-1. add regex to fields (only string and only numbers)
-2. fix css to app
+1. fix css to app
 */
 
 interface UserData {
@@ -25,7 +24,6 @@ const App: React.FC = () => {
   const [details, setDetails] = useState<JMBGDetails | null>(null);
 
   const [error, setError] = useState<string>('');
-  console.log('🚀 ~ file: App.tsx:28 ~ error:', error);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
@@ -33,6 +31,11 @@ const App: React.FC = () => {
   };
 
   const handleClick = () => {
+    if (userData.firstName === '' || userData.lastName === '') {
+      setError('Unesite sve podatke.');
+      setDetails(null);
+      return;
+    }
     const details: JMBGDetails = getJMBGDetails(userData.jmbg.toString());
     setDetails(details);
     if (details.isValid === false) setError(details.error);
@@ -57,16 +60,14 @@ const App: React.FC = () => {
       />
       <Input type='number' label='JMBG' name='jmbg' value={userData.jmbg} onChange={handleChange} />
       <Button title='Pretraži' onClick={handleClick} />
-
-      {details?.isValid ? (
+      {details?.isValid && (
         <div>
           <div>Datum rođenja: {details.dateOfBirth}</div>
           <div>Regija rođenja: {details.region}</div>
           <div>Pol: {details.gender}</div>
         </div>
-      ) : (
-        <div>{error}</div>
       )}
+      <div>{error}</div>
     </>
   );
 };
