@@ -30,11 +30,6 @@ export const getJMBGDetails = (jmbg: string): JMBGDetails => {
 
   const digits: number[] = extractDigits(jmbg);
 
-  if (digits.length !== 13) {
-    details.error = 'Neispravan JMBG!';
-    return details;
-  }
-
   const [
     dayOfBirthDigit1,
     dayOfBirthDigit2,
