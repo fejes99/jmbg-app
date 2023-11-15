@@ -130,7 +130,7 @@ const isWithinRange = (value: number, min: number, max: number): boolean =>
 const getDaysInMonth = (year: number, month: number): number => new Date(year, month, 0).getDate();
 
 const validateRegion = (regionCode: number): string | null => {
-  const regionsData: { [controlDigitey: string]: string } = regions;
+  const regionsData: { [controlDigit: string]: string } = regions;
   return regionsData[regionCode.toString()] || null;
 };
 
